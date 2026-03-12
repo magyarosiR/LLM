@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Product, ProductDTO, ProductUpdateDTO } from '../models/Product';
+import type { CartItem, Product, ProductDTO, ProductUpdateDTO } from '../models/Product';
 
 const apiClient = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000',
@@ -30,4 +30,14 @@ export const deleteProduct = async (id: number): Promise<void> => {
 export const getProduct = async (id: number): Promise<Product> => {
     const response = await apiClient.get(`/products/${id}`);
     return response.data;
+};
+
+export const addProductToCart = async (productId: number): Promise<CartItem> => {
+  const response = await apiClient.post(`/cart/items/${productId}`);
+  return response.data;
+};
+
+export const getCartItems = async (): Promise<CartItem[]> => {
+  const response = await apiClient.get('/cart/items/');
+  return response.data;
 };
