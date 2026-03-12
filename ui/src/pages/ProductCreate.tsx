@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Container, TextField, Typography } from '@mui/material';
 import { createProduct } from '../services/api';
-import { ProductDTO } from '../models/Product';
+import type { ProductDTO } from '../models/Product';
 
 const ProductCreate = () => {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ const ProductCreate = () => {
   const [description, setDescription] = useState('');
   const [stock, setStock] = useState('');
 
-  const handleSubmit = async (event: React.FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     const newProduct: ProductDTO = {
       name,

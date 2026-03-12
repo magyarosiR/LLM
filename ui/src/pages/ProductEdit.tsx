@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, type FormEvent } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Container, TextField, Typography } from '@mui/material';
 import { getProduct, updateProduct } from '../services/api';
-import { ProductUpdateDTO } from '../models/Product';
+import type { ProductUpdateDTO } from '../models/Product';
 
 const ProductEdit = () => {
   const { id } = useParams<{ id: string }>();
@@ -29,7 +29,7 @@ const ProductEdit = () => {
     fetchProduct();
   }, [id]);
 
-  const handleSubmit = async (event: React.FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     if (id) {
       const updatedProduct: ProductUpdateDTO = {

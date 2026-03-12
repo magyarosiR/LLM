@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProduct } from '../services/api';
-import { Product } from '../models/Product';
+import type { Product } from '../models/Product';
 import { Container, Typography, Card, CardContent, CircularProgress } from '@mui/material';
 
 const ProductDetail = () => {
