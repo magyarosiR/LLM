@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Container, TextField, Typography } from '@mui/material';
 import { getProduct, updateProduct } from '../services/api';
-import { ProductUpdateDTO } from '../models/Product';
+import type { ProductUpdateDTO } from '../models/Product';
 
 const ProductEdit = () => {
   const { id } = useParams<{ id: string }>();

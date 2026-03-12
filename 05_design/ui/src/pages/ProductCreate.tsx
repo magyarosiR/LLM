@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Container, TextField, Typography } from '@mui/material';
 import { createProduct } from '../services/api';
-import { ProductDTO } from '../models/Product';
+import type { ProductDTO } from '../models/Product';
 
 const ProductCreate = () => {
   const navigate = useNavigate();

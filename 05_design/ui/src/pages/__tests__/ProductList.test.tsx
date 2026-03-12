@@ -6,11 +6,13 @@ import ProductList from '../ProductList';
 // Mock the api service
 vi.mock('../../services/api', () => ({
   getProducts: vi.fn(() => Promise.resolve([])),
+  getCartItems: vi.fn(() => Promise.resolve([])),
+  addProductToCart: vi.fn(() => Promise.resolve()),
   deleteProduct: vi.fn(() => Promise.resolve()),
 }));
 
 describe('ProductList', () => {
-  it('renders the product list page', () => {
+  it('renders the product list page', async () => {
     render(
       <Router>
         <ProductList />
@@ -18,9 +20,9 @@ describe('ProductList', () => {
     );
 
     // Check for the main heading
-    expect(screen.getByText(/Products/i)).toBeInTheDocument();
+    expect(await screen.findByText(/Products/i)).toBeInTheDocument();
 
     // Check for the create product button
-    expect(screen.getByRole('button', { name: /Create Product/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Create Product/i })).toBeInTheDocument();
   });
 });
